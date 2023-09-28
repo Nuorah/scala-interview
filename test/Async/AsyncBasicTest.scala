@@ -15,14 +15,15 @@ class AsyncBasicTest extends PlaySpec {
   "AsyncBasic" should {
     "eventually compute sum from fake webservices" in {
       Await.result(AsyncBasic.compute("1"), Duration("1s")) mustBe 1099
-      val exception = intercept[Exception] {
+      val exception1 = intercept[Exception] {
         Await.result(AsyncBasic.compute("2"), Duration("1s"))
       }
-      exception.getMessage() mustBe "Webservice2: no value"
+      exception1.getMessage() mustBe "Webservice2: no value"
       val exception2 = intercept[Exception] {
         Await.result(AsyncBasic.compute("3"), Duration("1s"))
       }
-      exception.getMessage() mustBe "Webservice1: no Value"
+
+      exception2.getMessage() mustBe "Webservice1: no value"
     }
   }
 }
