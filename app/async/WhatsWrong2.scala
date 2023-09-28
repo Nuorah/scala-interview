@@ -29,6 +29,10 @@ object EnterpriseDao {
 object WhatsWrong2 {
 
   //Review this code. What could be done better ? How would you do it ?
+
+  //no need for an option in the parameter
+  //first look for CEO, then look for entreprise if you found a CEO.
+  //I don't see the point in having one function that returns a tuple? 
   def getCEOAndEnterprise(ceo_id: Option[String]): Future[(Option[CEO], Option[Enterprise])] = {
     for {
       ceo        <- CEODao.byId(ceo_id.get)
@@ -36,5 +40,13 @@ object WhatsWrong2 {
     } yield {
       (ceo, enterprise)
     }
+  }
+
+  //suggestion
+  def _getCEOAndEnterprise(ceo_id: String): Future[(Option[CEO], Option[Enterprise])] = {
+    for {
+      ceo <- CEODao.byId(ceo_id)
+      enterprise <- if (ceo.isDefined) EnterpriseDao.byCEOId(ceo_id) else Future(None)
+    } yield (ceo, enterprise)
   }
 }
