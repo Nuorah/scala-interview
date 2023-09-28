@@ -12,17 +12,10 @@ object Refactoring {
     category: String
   )
 
-  def getCategories(files: List[File]): List[String] = {
-    val categories: List[String] = List()
+  //before: O(n²) at worse because you traverse the list once and then again each time with contains
+  //now: O(n) because you traverse the list once with map and then conversion to HashSet is O(n)
 
-    if(files != null) {
-      for(file <- files) {
-        if(file.category != null && !categories.contains(file.category)) {
-          categories :+ file.category
-        }
-      }
-    }
-
-    return categories
+  def getCategories(files: List[File]): Set[String] = {
+    files.map(_.category).toSet
   }
 }
