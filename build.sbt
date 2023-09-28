@@ -19,7 +19,7 @@ lazy val root: Project = (project in file("."))
 
 lazy val deps_tests = Seq(
   "org.scalatestplus"       %% "mockito-3-4"        % "3.2.6.0" % Test withSources (),
-  "org.scalatestplus.play"  %% "scalatestplus-play" % "5.1.0"   % Test withSources () excludeAll (ExclusionRule(
+  "org.scalatestplus.play"  %% "scalatestplus-play" % "6.0.0-RC2"   % Test withSources () excludeAll (ExclusionRule(
     organization = "org.mockito"
   )),
   "com.opentable.components" % "otj-pg-embedded"    % "0.13.3"  % Test withSources ()
