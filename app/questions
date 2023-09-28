@@ -1,11 +1,27 @@
 
 1) Explain REST
 
+Architectural guidelines to help build scalable and performant web applications, emphasizing decoupling client and server, stateless server, layered system, etc.
+
 2) Explain the architectural style for the creation of a web API (client server communication, formatting language, number of servers, etc.)
 
+Usually client is run in the web browser, and communicates via http or sometimes websocket or another protocol with one or more servers. There might not be a client and the server can expose only the api. Between the client and the server data is exchanged in json or xml or another formatting langage and sometimes some data is communicated in a session cookie. Server is usually one to many with the help of a load balancer (if the exchanges between client and server are stateless). Servers can access a database or other servers to fetch data with different kinds of protocols (http, grpc, jms).
+
 3) What are the best practices when deploying an application in the cloud
+
+I have not deployed any application to the cloud but i would guess mostly the same practices as if deploying an application anywhere i.e. make it run through a CI pipeline, put it in a container to standardize deployment
 
 4) What are your best strength : infra ? DB ? web ?
 Give us detail about it
 
+My only experience in infra is editing CI pipelines when devops where not available and helping my former 
+scrum master to deploy a jar on the pre-prod server when the devops where on holiday.
+
+I have a bit more experience with database, i can write SQL at a medium level for most relational SQL db and i am familiar with some noSQL databases. During my experience at Niji working with play framework we wrote database interactions with anorm and so we directly wrote sql.
+
+I have worked mostly on web, implementing new features in a client-server mvc app at niji, modifying existant apis and implementing data fetching from other servers with jms and http, parsing and building xml files, cors issues, etc.
+
 5) Among all the projects you have worked on. Which architecture do you enjoy the most? explain why ?
+
+I have worked on an MVC monolithic architecture and a Microservices architecture. I don't have a preference as both
+had inconvenients and advantages; the monolithic architecture made developpement more linear and focused. The Microservice architecture made it easier to fit a whole project in my head to work on it but made possible complex interactions between the microservices harder to anticipate.
